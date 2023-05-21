@@ -9,7 +9,7 @@ services:
     image: nginx
     container_name: nginx
     ports:
-      - 7771:80
+      - 8905:80
     volumes:
       - .:/var/www
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
@@ -22,25 +22,26 @@ services:
     container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: docker
-      MYSQL_DATABASE: algolia
+      MYSQL_DATABASE: graphQL
       MYSQL_USER: docker
       MYSQL_PASSWORD: docker
       TZ: 'Asia/Tokyo'
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     volumes:
       - ./docker/db/etc/my.cnf:/etc/my.cnf
+      - ./docker/db/data:/var/lib/mysql
       - ./docker/db/etc:/docker-entrypoint-initdb.d
     ports:
-      - 3409:3306
+      - 4309:3306
 
 
   phpmyadmin:
     image: phpmyadmin
-    container_name: phpmyadmin
+    container_name: qlAdmin
     environment:
       - PMA_ARBITRARY=1
     restart: always
     ports:
-      - 1000:80
+      - 1011:80
     volumes:
       - /sessions
