@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('heritage', function (Blueprint $table) {
+        Schema::create('heritages', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
             $table->enum('country_name', [0, 195]);
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('heritage');
+        Schema::dropIfExists('heritages');
     }
 };
