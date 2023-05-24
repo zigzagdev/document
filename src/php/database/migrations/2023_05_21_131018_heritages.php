@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('heritages', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->unique();
-            $table->enum('country_name', [0, 195]);
+            $table->string('name');
+            $table->integer('country_name');
             $table->text('explanation');
             $table->integer('registered_year');
-            $table->enum('continent',[0, 5]);
+            $table->integer('continent');
             $table->timestamps();
         });
     }

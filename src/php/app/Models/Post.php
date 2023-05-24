@@ -10,7 +10,7 @@ class Post extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = 'Post';
+    protected $table = 'Posts';
     protected $guarded = [
       'id'
     ];
