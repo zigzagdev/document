@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('heritages', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->integer('country_name');
-            $table->text('explanation');
-            $table->integer('registered_year');
-            $table->integer('continent');
+            $table->string('name', 100);
+            $table->text('description');
+            $table->integer('heritage_id')->unsigned();
+            $table->foreign('heritage_id')->references('id')
+                ->on('heritages');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('heritages');
+        Schema::dropIfExists('posts');
     }
 };
