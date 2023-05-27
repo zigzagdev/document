@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Heritage extends Model
 {
-    use SoftDeletes, HasFactory;
+    use HasFactory;
 
     protected $table = 'Heritages';
     protected $fillable = [
