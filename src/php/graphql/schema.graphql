@@ -40,11 +40,10 @@ type User {
     updated_at: DateTime!
 }
 
-type heritage {
-    id: ID!
+type Heritage {
     name: String!
     country_name: Int!
-    explanation: Text!
+    explanation: String!
     registered_year: Int!
     continent: Int!
     created_at: DateTime!
@@ -56,6 +55,35 @@ extend type Query {
     heritages: [heritage!]!
 }
 
-extend type Query {
-    heritage: [heritage!]!
+type Mutation {
+    createHeritage(
+    name: String!
+    country_name: Int!
+    explanation: String!
+    registered_year: Int!
+    continent: Int!
+    ): Heritage!
+}
+
+extend type Mutation {
+    updateHeritage(
+    id: ID
+    registered_year: Int!
+    ): Heritage!
+}
+
+extend type Mutation {
+    deleteHeritage(id: ID): Heritage!
+}
+
+input createHeritageInput {
+    name: String!
+    country_name: Int!
+    explanation: String!
+    registered_year: Int!
+    continent: Int!
+}
+
+extend type Mutation {
+    createHeritages(heritages: [createHeritageInput!]!): [Heritage!]!
 }
