@@ -15,7 +15,7 @@ class CreateHeritages {
             $heritage->registered_year = $input["registered_year"];
             $heritage->continent = $input["continent"];
             $heritage->save();
-            $heritages[] = $heritage->refresh();
+            $heritages[] = $heritage;
         }
         return $heritages;
     }
