@@ -17,6 +17,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Heritage::factory()->count(3)->create();
-        Post::factory()->count(4)->create();
+        Post::factory()->count(4)->create(['heritage_id' => 4]);
     }
 }
